@@ -13,6 +13,7 @@ use app\models\ContactForm;
 class SiteController extends Controller
 {
     /**
+     
      * {@inheritdoc}
      */
     public function behaviors()
@@ -72,12 +73,14 @@ class SiteController extends Controller
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+            
+            return $this->redirect(["site/index"]);
         }
 
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+        if ($model->load(Yii::$app->request->post()) && $model->login()) { // fazer uma buscar pra redirecionar
             return $this->goBack();
+            //return $this->redirect(["usuario/index"]); // escolher pra qual pagina vai ser direcionada após o login
         }
 
         $model->password = '';

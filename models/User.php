@@ -10,85 +10,73 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
     public $authKey;
     public $accessToken;
 
-    private static $users = [
-        '100' => [
-            'id' => '100',
-            'username' => 'admin',
-            'password' => 'admin',
-            'authKey' => 'test100key',
-            'accessToken' => '100-token',
-        ],
-        '101' => [
-            'id' => '101',
-            'username' => 'demo',
-            'password' => 'demo',
-            'authKey' => 'test101key',
-            'accessToken' => '101-token',
-        ],
-    ];
 
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function findIdentity($id)
+    public static function tableName()
     {
-        return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
+        return 'user';
     }
 
     /**
-     * {@inheritdoc}
+     * Localiza uma identidade pelo ID informado
+     *
+     * @param string|int $id o ID a ser localizado
+     * @return IdentityInterface|null o objeto da identidade que corresponde ao ID informado
+     */
+    public static function findIdentity($id)
+    {
+        return static::findOne($id);
+    }
+
+    /**
+     * Localiza uma identidade pelo token informado
+     *
+     * @param string $token o token a ser localizado
+     * @return IdentityInterface|null o objeto da identidade que corresponde ao token informado
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        foreach (self::$users as $user) {
-            if ($user['accessToken'] === $token) {
-                return new static($user);
-            }
-        }
-
-        return null;
+        return static::findOne(['access_token' => $token]);
     }
 
     /**
      * Finds user by username
      *
-     * @param string $username
+     * @param string $Username
      * @return static|null
      */
     public static function findByUsername($username)
     {
-        foreach (self::$users as $user) {
-            if (strcasecmp($user['username'], $username) === 0) {
-                return new static($user);
-            }
-        }
-
-        return null;
+        return static::findOne(['Username' => $username]);;
     }
 
     /**
-     * {@inheritdoc}
+     * @return int|string o ID do usuário atual
      */
     public function getId()
     {
-        return $this->id;
+        return $this->idUsuario;
     }
 
     /**
-     * {@inheritdoc}
+     * @return string a chave de autenticação do usuário atual
      */
     public function getAuthKey()
     {
-        return $this->authKey;
+        return $this->auth_key;
+    }
+
+    public function getPassword()
+    {
+        return $this->Password;
     }
 
     /**
-     * {@inheritdoc}
+     * @param string $authKey
+     * @return bool se a chave de autenticação do usuário atual for válida
      */
     public function validateAuthKey($authKey)
     {
-        return $this->authKey === $authKey;
+        return $this->getAuthKey() === $authKey;
     }
 
     /**
@@ -99,6 +87,6 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
      */
     public function validatePassword($password)
     {
-        return $this->password === $password;
+        return $this->getPassword() === $password;
     }
 }
