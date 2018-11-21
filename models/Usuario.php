@@ -110,6 +110,14 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     }
 
     /**
+     * @return string|string o tipo do usuário atual
+     */
+    public function getTipo()
+    {
+        return $this->tipo;
+    }
+
+    /**
      * @return string a chave de autenticação do usuário atual
      */
     public function getAuthKey()
