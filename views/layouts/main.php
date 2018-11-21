@@ -125,7 +125,7 @@ AppAsset::register($this);
             <!-- Footer -->
             <div class="footer">
                 <div class="float-right">
-                    Projeto <strong>Semadec.</strong>
+                    Projeto <strong>Semadec..</strong>
                 </div>
                 <div>
                     <strong>Copyright</strong> Marcos & Westefns &copy; 2018
