@@ -41,15 +41,10 @@ AppAsset::register($this);
                             IN+
                         </div>
                     </li>
-                    
-                    <?php
-                        if(!Yii::$app->user->isGuest)
-                        {
-                            echo '<li class="active landing_link">
-                                <a target="_blank" href="landing.html"><i class="fa fa-star"></i> <span class="nav-label">Landing Page</span> <span class="label label-warning float-right">NEW</span></a>
-                            </li>';
-                        }
-                    ?>
+
+                    <li class="active landing_link">
+                        <a target="_blank" href="landing.html"><i class="fa fa-star"></i> <span class="nav-label">Landing Page</span> <span class="label label-warning float-right">NEW</span></a>
+                    </li>
                     
                     <li>
                         <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">Programação</span></a>
