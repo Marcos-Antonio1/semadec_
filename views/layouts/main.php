@@ -34,17 +34,17 @@ AppAsset::register($this);
                 <ul class="nav metismenu" id="side-menu">
                     <li class="nav-header">
                         <div class="dropdown profile-element">
-                            <!-- <img alt="image" class="rounded-circle" src="img/profile_small.jpg"/> -->
-                            <span class="block m-t-xs font-bold">SEMADEC</span>
-                            <span class="text-muted text-xs block">IFRN - Campus Currais Novos</span>
+                            <img alt="image" class="" style="width: 40px" src="img/logo_ifrn.png" alt="IFRN"/>
+                            <span class="block m-t-xs font-bold text-white">SEMADEC</span>
+                            <span class="text-muted text-xs block">Campus Currais Novos</span>
                         </div>
                         <div class="logo-element">
-                            IN+
+                            <img alt="image" class="" style="width: 40px" src="img/logo_ifrn.png" alt="IFRN"/>
                         </div>
                     </li>
 
                     <li class="active landing_link">
-                        <a target="_blank" href="landing.html"><i class="fa fa-star"></i> <span class="nav-label">Landing Page</span> <span class="label label-warning float-right">NEW</span></a>
+                        <a target="_blank" href="landing.html"><i class="fa fa-th-large"></i> <span class="nav-label">Área Administrativa</span></a>
                     </li>
                     
                     <li>
@@ -108,18 +108,10 @@ AppAsset::register($this);
                     </ul>
                 </nav>
             </div>
-            <!-- Fim Menu Topo fixo -->
-
+            <!-- Fim Menu Topo fixo -->            
+            
             <!-- Content -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="wrapper wrapper-content">
-                            <div class="row">
-                            <?= $content ?>
-                            </div>
-                    </div>
-                </div>
-            </div>
+            <?= $content ?>
             <!-- Fim Content -->
             
             <!-- Footer -->

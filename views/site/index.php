@@ -1,53 +1,76 @@
 <?php
 
+use yii\helpers\Url;
 /* @var $this yii\web\View */
 
 $this->title = 'My Yii Application';
 ?>
-<div class="site-index">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
-
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-
+<!-- LOGO INDEX -->
+<div class="row  border-bottom white-bg dashboard-header text-center">
+    <div class="col-md-12">
+        <img src="img/logo_transparente.png" class="img-fluid" alt="Responsive image">
     </div>
 </div>
+<!-- FIM LOGO INDEX -->
+
+<!-- Corpo da página -->
+<div class="row">
+    <!-- Coluna única -->
+    <div class="col-lg-12">
+        <!-- Embrulho da página -->
+        <div class="wrapper wrapper-content">
+            <!-- Linha interna -->
+            <div class="row">
+                <!-- Cartão -->
+                <div class="card-deck">
+                    <div class="card text-center">
+                        <div class="card-header">Eventos</div>
+                        <img class="card-img-top" src="img/239x180.svg" alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="btn btn-primary">Visualizar Eventos</a>
+                        </div>
+                    </div>
+                    <div class="card text-center">
+                        <div class="card-header">Eventos</div>
+                        <img class="card-img-top" src="img/239x180.svg" alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="btn btn-primary">Visualizar Eventos</a>
+                        </div>
+                    </div>
+                    <div class="card text-center">
+                        <div class="card-header">Eventos</div>
+                        <img class="card-img-top" src="img/239x180.svg" alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="btn btn-primary">Visualizar Eventos</a>
+                        </div>
+                    </div>
+                    <div class="card text-center">
+                        <div class="card-header">Eventos</div>
+                        <img class="card-img-top" src="img/239x180.svg" alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="btn btn-primary">Visualizar Eventos</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fim Cartão -->
+            </div>
+            <!-- Fim Linha interna -->
+        </div>
+        <!-- Fim Embrulho da página -->
+    </div>
+    <!-- Fim Coluna única -->
+</div>
+<!-- Fim Corpo da página -->
