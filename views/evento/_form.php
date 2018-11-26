@@ -1,7 +1,9 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
+use app\models\Semadec;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Evento */
@@ -12,28 +14,25 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'idevento')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'Tema')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'descricao')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'data')->textInput() ?>
+    <?= $form->field($model, 'horascurriculares')->textInput(['type' => 'number']) ?>
 
-    <?= $form->field($model, 'horascurriculares')->textInput() ?>
+    <?= $form->field($model, 'tipo')->dropDownList(['Minicurso' => 'Minicurso', 'Oficina' => 'Oficina', 'Palestra' => 'Palestra', 'Apresentação' => 'Apresentação', ]) ?>
 
-    <?= $form->field($model, 'tipo')->dropDownList([ 'Minicurso' => 'Minicurso', 'Oficina' => 'Oficina', 'Palestra' => 'Palestra', 'Apresentação' => 'Apresentação', ], ['prompt' => '']) ?>
+    <?= $form->field($model, 'semadec_idSemadec')->dropDownList(ArrayHelper::map(Semadec::find()->All(), 'idSemadec', 'Tema')) ?>
 
-    <?= $form->field($model, 'semadec_idSemadec')->textInput() ?>
+    <?= $form->field($model, 'data')->textInput(['type' => 'date']) ?>
 
-    <?= $form->field($model, 'hora_inicio')->textInput() ?>
+    <?= $form->field($model, 'hora_inicio')->textInput(['type' => 'time']) ?>
 
-    <?= $form->field($model, 'hora_fim')->textInput() ?>
+    <?= $form->field($model, 'hora_fim')->textInput(['type' => 'time']) ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
-
 </div>

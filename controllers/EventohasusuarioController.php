@@ -77,6 +77,26 @@ class EventohasusuarioController extends Controller
     }
 
     /**
+     * Creates a new Eventohasusuario model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionInscricao($evento_idevento)
+    {
+        $model = new Eventohasusuario();
+        $model->evento_idevento = $evento_idevento;
+        $model->usuario_id = Yii::$app->user->id;
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'evento_idevento' => $model->evento_idevento, 'usuario_id' => $model->usuario_id]);
+        }
+
+        return $this->render('create', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
      * Updates an existing Eventohasusuario model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param string $evento_idevento

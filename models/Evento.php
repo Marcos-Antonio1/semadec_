@@ -37,7 +37,7 @@ class Evento extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idevento', 'Tema', 'descricao', 'data', 'semadec_idSemadec'], 'required'],
+            [['Tema', 'descricao', 'data', 'semadec_idSemadec'], 'required'],
             [['idevento', 'horascurriculares', 'semadec_idSemadec'], 'integer'],
             [['data', 'hora_inicio', 'hora_fim'], 'safe'],
             [['tipo'], 'string'],
@@ -58,9 +58,9 @@ class Evento extends \yii\db\ActiveRecord
             'Tema' => Yii::t('app', 'Tema'),
             'descricao' => Yii::t('app', 'Descricao'),
             'data' => Yii::t('app', 'Data'),
-            'horascurriculares' => Yii::t('app', 'Horascurriculares'),
+            'horascurriculares' => Yii::t('app', 'Horas curriculares'),
             'tipo' => Yii::t('app', 'Tipo'),
-            'semadec_idSemadec' => Yii::t('app', 'Semadec Id Semadec'),
+            'semadec_idSemadec' => Yii::t('app', 'Semadec'),
             'hora_inicio' => Yii::t('app', 'Hora Inicio'),
             'hora_fim' => Yii::t('app', 'Hora Fim'),
         ];

@@ -5,6 +5,7 @@
 
 use app\widgets\Alert;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
@@ -51,7 +52,7 @@ AppAsset::register($this);
                         <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">Programação</span></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-globe"></i> <span class="nav-label">Eventos</span><span class="label label-info float-right">NEW</span></a>
+                        <a href="<?= Url::toRoute('evento/index') ?>"><i class="fa fa-globe"></i> <span class="nav-label">Eventos</span><span class="label label-info float-right">NEW</span></a>
                     </li>
                     
                     <li>
@@ -112,6 +113,7 @@ AppAsset::register($this);
             
             <!-- Content -->
             <?= $content ?>
+            <br>
             <!-- Fim Content -->
             
             <!-- Footer -->

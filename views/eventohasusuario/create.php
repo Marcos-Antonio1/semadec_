@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-
+use app\models\Eventohasusuario;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Eventohasusuario */

@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'usuario_id')->textInput() ?>
 
-    <?= $form->field($model, 'tipo')->dropDownList([ 'expectador' => 'Expectador', 'ministrante' => 'Ministrante', ], ['prompt' => '']) ?>
+    <?= $form->field($model, 'tipo')->dropDownList([ 'expectador' => 'Expectador', 'ministrante' => 'Ministrante', ]) ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
