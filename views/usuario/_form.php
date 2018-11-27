@@ -20,11 +20,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
+     <?= $form->field($model, 'password_repeat')->passwordInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'biografia')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'formacao')->textInput(['maxlength' => true]) ?>
 
-       <?= $form->field($model, 'password_repeat')->passwordInput(['maxlength' => true]) ?>
+
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

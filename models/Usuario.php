@@ -25,7 +25,7 @@ use IdentityInterface;
  */
 class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
-    
+
     public $password_repeat;
     /**
      * {@inheritdoc}
@@ -42,7 +42,7 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             [['username', 'password'], 'required'],
-            [['username'], 'string', 'max' => 45],
+            [['username','tipo'], 'string', 'max' => 45],
             [['password', 'auth_key', 'access_token'], 'string', 'max' => 100],
             [['password_repeat'], 'compare', 'compareAttribute' => 'password'],
         ];
@@ -63,10 +63,10 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             'access_token' => Yii::t('app', 'Access Token'),
             'biografia' => Yii::t('app', 'Biografia'),
             'formacao' => Yii::t('app', 'Formacao'),
-          
+
         ];
     }
-    
+
     /**
      * Localiza uma identidade pelo ID informado
      *
@@ -114,7 +114,12 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
      */
     public function getTipo()
     {
-        return $this->tipo;
+        return [
+        'admin'=>Yii::t('app','admin'),
+        'aluno'=>Yii::t('app','aluno'),
+        'ministrante'=>Yii::t('app','ministrante'),
+
+        ];
     }
 
     /**
@@ -149,12 +154,31 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         if (parent::beforeSave($insert)) {
             if ($this->isNewRecord) {
-                $this->password = sha1($this->password);
                 $this->auth_key = \Yii::$app->security->generateRandomString();
                 $this->access_token = \Yii::$app->security->generateRandomString();
             }
+            if (isset($this->dirtyAttributes['password']))
+              $this->password = sha1($this->password);
             return true;
         }
         return false;
+    }
+     public function afterSave($insert, $changeAttributed)
+    {
+        $auth = Yii::$app->authManager;
+
+        if (!$insert) $auth->revokeAll($this->getId());
+
+        $papel = $auth->getRole($this->tipo);
+
+        $auth->assign($papel, $this->getId());
+
+        parent::afterSave($insert, $changeAttributed);
+    }
+     public function afterDelete()
+    {
+        Yii::$app->authManager->revokeAll($this->getId());
+
+        parent::afterDelete();
     }
 }
