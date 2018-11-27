@@ -9,6 +9,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+use yii\controllers\EventoController;
+
 /**
  * EventohasusuarioController implements the CRUD actions for Eventohasusuario model.
  */
@@ -86,14 +88,9 @@ class EventohasusuarioController extends Controller
         $model = new Eventohasusuario();
         $model->evento_idevento = $evento_idevento;
         $model->usuario_id = Yii::$app->user->id;
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'evento_idevento' => $model->evento_idevento, 'usuario_id' => $model->usuario_id]);
-        }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        $model->save();
+        
+        return $this->redirect(['view', 'evento_idevento' => $model->evento_idevento, 'usuario_id' => $model->usuario_id]);
     }
 
     /**

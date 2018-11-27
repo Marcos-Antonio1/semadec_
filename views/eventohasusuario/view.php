@@ -2,11 +2,12 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\controllers\EventoController;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Eventohasusuario */
 
-$this->title = $model->evento_idevento;
+$this->title = EventoController::findModel($model->evento_idevento);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Eventohasusuarios'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -33,5 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'tipo',
         ],
     ]) ?>
+
+    <div class="p-3 mb-2 bg-primary text-white">Inscreção realizada com sucesso!</div>
 
 </div>
