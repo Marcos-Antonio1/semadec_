@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
-    <p class="text-right">
+    <!-- <p class="text-right">
         <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->idevento], ['class' => 'btn btn-info']) ?>
         <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->idevento], [
             'class' => 'btn btn-danger',
@@ -39,5 +39,5 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
-    </p>
+    </p> -->
 </div>

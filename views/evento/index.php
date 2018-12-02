@@ -12,12 +12,12 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="evento-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1 class="text-center font-weight-bold"><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
+    <!-- <p>
         <?= Html::a(Yii::t('app', 'Create Evento'), ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    </p> -->
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -25,18 +25,25 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'idevento',
+            //'idevento',
             'Tema',
             'descricao',
             'data',
             'horascurriculares',
-            //'tipo',
+            'tipo',
             //'semadec_idSemadec',
-            //'hora_inicio',
-            //'hora_fim',
+            'hora_inicio',
+            'hora_fim',
 
             [
                 'class' => 'yii\grid\ActionColumn',
+                'header' => 'Ações',
+                'template' => '{view}',
+                'buttons' => [
+                    'view' => function($url){
+                        return Html::a('View', $url, ['class' => 'btn btn-primary']);
+                    }
+                ],
             ],
         ],
     ]); ?>
