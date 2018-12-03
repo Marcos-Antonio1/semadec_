@@ -9,6 +9,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\views\usuario;
 
 class SiteController extends Controller
 {
@@ -78,8 +79,8 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) { // fazer uma buscar pra redirecionar
-            return $this->goBack();
-            //return $this->redirect(["usuario/index"]); // escolher pra qual pagina vai ser direcionada após o login
+            //sreturn $this-render(['site/index'])
+            return $this->redirect(["usuario/adm"]); // escolher pra qual pagina vai ser direcionada após o login
         }
 
         $model->password = '';

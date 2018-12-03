@@ -56,6 +56,9 @@ class UsuarioController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
+    public function actionAdm(){
+        return $this->render('adm');
+    }
 
     /**
      * Creates a new Usuario model.
