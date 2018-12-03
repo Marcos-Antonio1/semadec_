@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'tipo')->dropDownList([ 'aluno' => 'Aluno', 'admin' => 'Admin', 'ministrante' => 'Ministrante', ], ['prompt' => '']) ?>
+    <?= $form->field($model, 'tipo')->dropDownList([ 'aluno' => 'Aluno', 'admin' => 'Admin', 'ministrante' => 'Ministrante' ]) ?>
 
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
@@ -25,8 +25,6 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'biografia')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'formacao')->textInput(['maxlength' => true]) ?>
-
-
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

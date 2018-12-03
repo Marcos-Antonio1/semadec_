@@ -25,14 +25,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'idEsporte',
+            //'idEsporte',
             'nome',
             'categoria',
             'modalidade',
             'quantidade_max',
             //'quantidade_min',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => 'view'
+            ],
         ],
     ]); ?>
 </div>

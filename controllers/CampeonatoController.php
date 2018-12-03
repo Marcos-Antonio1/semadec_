@@ -5,6 +5,8 @@ namespace app\controllers;
 use Yii;
 use app\models\Campeonato;
 use app\models\CampeonatoSeach;
+use app\controllers\SemadecController;
+use app\controllers\EsporteController;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

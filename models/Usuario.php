@@ -157,13 +157,15 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
                 $this->auth_key = \Yii::$app->security->generateRandomString();
                 $this->access_token = \Yii::$app->security->generateRandomString();
             }
+            
             if (isset($this->dirtyAttributes['password']))
-              $this->password = sha1($this->password);
+                $this->password = sha1($this->password);
+            
             return true;
         }
         return false;
     }
-     public function afterSave($insert, $changeAttributed)
+    public function afterSave($insert, $changeAttributed)
     {
         $auth = Yii::$app->authManager;
 
@@ -175,7 +177,8 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 
         parent::afterSave($insert, $changeAttributed);
     }
-     public function afterDelete()
+
+    public function afterDelete()
     {
         Yii::$app->authManager->revokeAll($this->getId());
 

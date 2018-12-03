@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\TurmaSeach */
+/* @var $model app\models\TurmaSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
