@@ -9,11 +9,15 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+use app\controllers\EventoController;
+use app\controllers\UsuarioController;
+
 /**
  * EventohasusuarioController implements the CRUD actions for Eventohasusuario model.
  */
 class EventohasusuarioController extends Controller
 {
+    
     /**
      * {@inheritdoc}
      */
@@ -53,8 +57,15 @@ class EventohasusuarioController extends Controller
      */
     public function actionView($evento_idevento, $usuario_id)
     {
+        $searchModel = new Eventohasusuarioseach();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
         return $this->render('view', [
+            'dataProvider' => $dataProvider,
             'model' => $this->findModel($evento_idevento, $usuario_id),
+            'evento' => EventoController::findModel($evento_idevento),
+            'usuario' => UsuarioController::findModel($usuario_id),
+            'inscritos' => $this->findInscritos($evento_idevento),
         ]);
     }
 
@@ -86,14 +97,9 @@ class EventohasusuarioController extends Controller
         $model = new Eventohasusuario();
         $model->evento_idevento = $evento_idevento;
         $model->usuario_id = Yii::$app->user->id;
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'evento_idevento' => $model->evento_idevento, 'usuario_id' => $model->usuario_id]);
-        }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        $model->save();
+        
+        return $this->redirect(['view', 'evento_idevento' => $model->evento_idevento, 'usuario_id' => $model->usuario_id]);
     }
 
     /**
@@ -143,6 +149,15 @@ class EventohasusuarioController extends Controller
     protected function findModel($evento_idevento, $usuario_id)
     {
         if (($model = Eventohasusuario::findOne(['evento_idevento' => $evento_idevento, 'usuario_id' => $usuario_id])) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+    }
+
+    protected function findInscritos($evento_idevento)
+    {
+        if (($model = Eventohasusuario::findAll(['evento_idevento' => $evento_idevento])) !== null) {
             return $model;
         }
 
