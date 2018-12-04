@@ -14,7 +14,7 @@ use app\models\Turma;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'tipo')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'tipo')->dropDownList([ 'Feminino' => 'Feminino', 'Masculino' => 'Masculino', 'Misto' => 'Misto', ], ['prompt' => '']) ?>
 
     <?= $form->field($model, 'idTurma')->dropDownList(ArrayHelper::map(Turma::find()->All(), 'idTurma', 'Nome')) ?>
 

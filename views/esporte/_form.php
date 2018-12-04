@@ -12,11 +12,9 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'nome')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'categoria')->dropDownList([ 'coletivo' => 'Coletivo', 'individual' => 'Individual', ], ['prompt' => '']) ?>
 
-    <?= $form->field($model, 'categoria')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'modalidade')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'modalidade')->dropDownList([ 'Basquete' => 'Basquete', 'Futebol' => 'Futebol', 'Maratona' => 'Maratona', 'Natacao' => 'Natacao', 'TenisDeMesa' => 'TenisDeMesa', 'Volei' => 'Volei', 'VoleiDeAreia' => 'VoleiDeAreia', 'Queimada' => 'Queimada', ], ['prompt' => '']) ?>
 
     <?= $form->field($model, 'quantidade_max')->textInput() ?>
 

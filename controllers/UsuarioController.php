@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Usuario;
-use app\models\UsuarioSeach;
+use app\models\UsuarioSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,7 +35,7 @@ class UsuarioController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new UsuarioSeach();
+        $searchModel = new UsuarioSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -67,7 +67,16 @@ class UsuarioController extends Controller
         $model = new Usuario();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->tipo === 'aluno')
+            {
+                return $this->render('alunohastime/create', [
+                    'model' => $model,
+                ]);
+            }
+            else
+            {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
 
         return $this->render('create', [
@@ -116,7 +125,7 @@ class UsuarioController extends Controller
      * @return Usuario the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function findModel($id)
+    protected function findModel($id)
     {
         if (($model = Usuario::findOne($id)) !== null) {
             return $model;

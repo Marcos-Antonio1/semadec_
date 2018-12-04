@@ -17,7 +17,7 @@ use app\models\Esporte;
 
     <?= $form->field($model, 'idSemadec')->dropDownList(ArrayHelper::map(Semadec::find()->All(), 'idSemadec', 'Tema')) ?>
 
-    <?= $form->field($model, 'idEsporte')->dropDownList(ArrayHelper::map(Esporte::find()->All(), 'idEsporte', 'nome')) ?>
+    <?= $form->field($model, 'idEsporte')->dropDownList(ArrayHelper::map(Esporte::find()->All(), 'idEsporte', 'modalidade')) ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

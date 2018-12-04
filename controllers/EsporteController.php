@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Esporte;
-use app\models\EsporteSeach;
+use app\models\EsporteSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,7 +35,7 @@ class EsporteController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new EsporteSeach();
+        $searchModel = new EsporteSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [

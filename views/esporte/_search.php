@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\EsporteSeach */
+/* @var $model app\models\EsporteSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -17,15 +17,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'idEsporte') ?>
 
-    <?= $form->field($model, 'nome') ?>
-
     <?= $form->field($model, 'categoria') ?>
 
     <?= $form->field($model, 'modalidade') ?>
 
     <?= $form->field($model, 'quantidade_max') ?>
 
-    <?php // echo $form->field($model, 'quantidade_min') ?>
+    <?= $form->field($model, 'quantidade_min') ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>

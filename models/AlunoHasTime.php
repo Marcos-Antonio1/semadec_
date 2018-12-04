@@ -46,9 +46,9 @@ class AlunoHasTime extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'usuario_id' => Yii::t('app', 'Usuario ID'),
-            'time_idTime' => Yii::t('app', 'Time Id Time'),
-            'numero' => Yii::t('app', 'Numero'),
+            'usuario_id' => Yii::t('app', 'Usuario'),
+            'time_idTime' => Yii::t('app', 'Time'),
+            'numero' => Yii::t('app', 'Número'),
             'penalidades' => Yii::t('app', 'Penalidades'),
         ];
     }

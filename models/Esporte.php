@@ -8,7 +8,6 @@ use Yii;
  * This is the model class for table "esporte".
  *
  * @property int $idEsporte
- * @property string $nome
  * @property string $categoria
  * @property string $modalidade
  * @property int $quantidade_max
@@ -32,10 +31,9 @@ class Esporte extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'categoria', 'modalidade', 'quantidade_max', 'quantidade_min'], 'required'],
+            [['categoria', 'modalidade', 'quantidade_max', 'quantidade_min'], 'required'],
+            [['categoria', 'modalidade'], 'string'],
             [['quantidade_max', 'quantidade_min'], 'integer'],
-            [['nome', 'categoria'], 'string', 'max' => 45],
-            [['modalidade'], 'string', 'max' => 1],
         ];
     }
 
@@ -46,7 +44,6 @@ class Esporte extends \yii\db\ActiveRecord
     {
         return [
             'idEsporte' => Yii::t('app', 'Id Esporte'),
-            'nome' => Yii::t('app', 'Nome'),
             'categoria' => Yii::t('app', 'Categoria'),
             'modalidade' => Yii::t('app', 'Modalidade'),
             'quantidade_max' => Yii::t('app', 'Quantidade Max'),

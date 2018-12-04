@@ -32,7 +32,6 @@ class Semadec extends \yii\db\ActiveRecord
     {
         return [
             [['Tema', 'campus'], 'required'],
-            [['Ano'], 'safe'],
             [['Tema', 'campus'], 'string', 'max' => 45],
         ];
     }

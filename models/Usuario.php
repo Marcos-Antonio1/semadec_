@@ -3,11 +3,12 @@
 namespace app\models;
 
 use Yii;
-use IdentityInterface;
+use yii\web\IdentityInterface;
+use yii\db\ActiveRecord;
 
-/**
- * This is the model class for table "usuario".
- *
+/** 
+ * This is the model class for table "usuario". 
+ * 
  * @property int $id
  * @property string $username
  * @property string $email
@@ -17,16 +18,17 @@ use IdentityInterface;
  * @property string $access_token
  * @property string $biografia
  * @property string $formacao
- *
+ * 
  * @property AlunoHasTime[] $alunoHasTimes
  * @property Time[] $timeIdTimes
  * @property EventoHasUsuario[] $eventoHasUsuarios
  * @property Evento[] $eventoIdeventos
- */
-class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
+ */ 
+class Usuario extends ActiveRecord implements IdentityInterface
 {
 
     public $password_repeat;
+    
     /**
      * {@inheritdoc}
      */
@@ -35,25 +37,28 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return 'usuario';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function rules()
-    {
+    /** 
+     * {@inheritdoc} 
+     */ 
+    public function rules() 
+    { 
         return [
-            [['username', 'password'], 'required'],
-            [['username','tipo'], 'string', 'max' => 45],
-            [['password', 'auth_key', 'access_token'], 'string', 'max' => 100],
+            [['username', 'email', 'tipo', 'password'], 'required'],
+            [['tipo'], 'string'],
+            [['username', 'email'], 'string', 'max' => 45],
+            [['password'], 'string', 'max' => 100],
+            [['auth_key', 'access_token', 'formacao'], 'string', 'max' => 300],
+            [['biografia'], 'string', 'max' => 1000],
             [['password_repeat'], 'compare', 'compareAttribute' => 'password'],
-        ];
-    }
+        ]; 
+    } 
 
-    /**
-     * {@inheritdoc}
-     */
-    public function attributeLabels()
-    {
-        return [
+    /** 
+     * {@inheritdoc} 
+     */ 
+    public function attributeLabels() 
+    { 
+        return [ 
             'id' => Yii::t('app', 'ID'),
             'username' => Yii::t('app', 'Username'),
             'email' => Yii::t('app', 'Email'),
@@ -63,9 +68,40 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             'access_token' => Yii::t('app', 'Access Token'),
             'biografia' => Yii::t('app', 'Biografia'),
             'formacao' => Yii::t('app', 'Formacao'),
-
-        ];
+        ]; 
     }
+
+    /** 
+     * @return \yii\db\ActiveQuery 
+     */ 
+    public function getAlunoHasTimes() 
+    { 
+        return $this->hasMany(AlunoHasTime::className(), ['usuario_id' => 'id']);
+    } 
+
+    /** 
+     * @return \yii\db\ActiveQuery 
+     */ 
+    public function getTimeIdTimes() 
+    { 
+        return $this->hasMany(Time::className(), ['idTime' => 'time_idTime'])->viaTable('aluno_has_time', ['usuario_id' => 'id']);
+    } 
+
+    /** 
+     * @return \yii\db\ActiveQuery 
+     */ 
+    public function getEventoHasUsuarios() 
+    { 
+        return $this->hasMany(EventoHasUsuario::className(), ['usuario_id' => 'id']);
+    } 
+
+    /** 
+     * @return \yii\db\ActiveQuery 
+     */ 
+    public function getEventoIdeventos() 
+    { 
+        return $this->hasMany(Evento::className(), ['idevento' => 'evento_idevento'])->viaTable('evento_has_usuario', ['usuario_id' => 'id']);
+    } 
 
     /**
      * Localiza uma identidade pelo ID informado
@@ -115,9 +151,9 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function getTipo()
     {
         return [
-        'admin'=>Yii::t('app','admin'),
-        'aluno'=>Yii::t('app','aluno'),
-        'ministrante'=>Yii::t('app','ministrante'),
+        'admin' => Yii::t('app','Admin'),
+        'aluno' => Yii::t('app','Aluno'),
+        'ministrante' => Yii::t('app','Ministrante'),
 
         ];
     }
@@ -165,6 +201,7 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         }
         return false;
     }
+
     public function afterSave($insert, $changeAttributed)
     {
         $auth = Yii::$app->authManager;

@@ -36,8 +36,8 @@ class Time extends \yii\db\ActiveRecord
     {
         return [
             [['tipo'], 'required'],
+            [['tipo'], 'string'],
             [['idTurma'], 'integer'],
-            [['tipo'], 'string', 'max' => 45],
             [['idTurma'], 'exist', 'skipOnError' => true, 'targetClass' => Turma::className(), 'targetAttribute' => ['idTurma' => 'idTurma']],
         ];
     }
