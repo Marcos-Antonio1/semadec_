@@ -45,6 +45,16 @@ class UsuarioController extends Controller
     }
 
     /**
+     * Lists all Usuario models.
+     * @return mixed
+     */
+    public function actionAdm()
+    {
+
+        return $this->render('adm');
+    }
+
+    /**
      * Displays a single Usuario model.
      * @param integer $id
      * @return mixed

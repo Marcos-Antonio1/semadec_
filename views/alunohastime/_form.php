@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 use app\models\Time;
+use app\models\Usuario;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Alunohastime */
@@ -14,11 +15,11 @@ use app\models\Time;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'usuario_id')->textInput() ?>
+    <?= $form->field($model, 'usuario_id')->dropDownList(ArrayHelper::map(Usuario::find()->where(['tipo' => 'aluno'])->All(), 'id', 'username')) ?>
 
-    <?= $form->field($model, 'time_idTime')->dropDownList(ArrayHelper::map(Time::find()->All(), 'idTime', 'Tema')) ?>
+    <?= $form->field($model, 'time_idTime')->dropDownList(ArrayHelper::map(Time::find()->All(), 'idTime', 'turma.Nome')) ?>
 
-    <?= $form->field($model, 'numero')->textInput() ?>
+    <?= $form->field($model, 'numero')->textInput(['type' => 'number']) ?> 
 
     <?= $form->field($model, 'penalidades')->textInput(['maxlength' => true]) ?>
 

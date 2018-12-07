@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
@@ -10,28 +11,45 @@ use yii\grid\GridView;
 $this->title = Yii::t('app', 'Esportes');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="esporte-index">
+<div class="text-center">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><i class="fas fa-basketball-ball"></i> <?= Html::encode($this->title) ?></h1>
+    <br>
+    <br>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a(Yii::t('app', 'Create Esporte'), ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'idEsporte',
-            'categoria',
+            //'idEsporte',
             'modalidade',
-            'quantidade_max',
-            'quantidade_min',
+            'categoria',
+            //'quantidade_max',
+            //'quantidade_min',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'header' => "Ações", 
+                'template' => '{view} {campeonato}',
+                'buttons' => [
+                    'view' => function ($url) {
+                        return Html::a('<i class="fas fa-info-circle"></i> ', $url,  ['class' => 'btn btn-primary']);
+                    },
+                    'campeonato' => function () {
+                        return Html::a('<i class="fas fa-trophy"></i> ', ['campeonato/index'], ['class' => 'btn btn-danger']);
+                    },
+                ],
+            ],
+        ],
+        'layout' => "{items}\n{pager}\n{summary}",
+        'tableOptions' => [
+            'class' => 'table',
+        ],
+        'headerRowOptions' => [
+            'class' => 'thead-dark',
         ],
     ]); ?>
 </div>

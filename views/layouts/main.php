@@ -44,9 +44,15 @@ AppAsset::register($this);
                         </div>
                     </li>
 
-                    <li class="active landing_link">
-                        <a target="_blank" href="landing.html"><i class="fa fa-th-large"></i> <span class="nav-label">Área Administrativa</span></a>
-                    </li>
+                    <?php if(!Yii::$app->user->isGuest && Yii::$app->user->identity->tipo === "admin")
+                    {
+                        echo '<li class="active landing_link">
+                            <a target="_blank" href="' . Url::toRoute('usuario/adm') . '"><i class="fa fa-th-large"></i> <span class="nav-label">Área Administrativa</span></a>
+                        </li>';
+                    }
+                    ?>
+
+                    
                     <li>
                         <a href="<?= Url::toRoute('esporte/index') ?>"><i class="fa fa-sitemap"></i> <span class="nav-label">Esportes</span></a>
                     </li>
@@ -75,11 +81,7 @@ AppAsset::register($this);
                             <i class="fa fa-bars"></i> 
                         </a>
 
-                        <form role="search" class="navbar-form-custom" action="search_results.html">
-                            <div class="form-group">
-                                <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
-                            </div>
-                        </form>
+                        
                     </div>
 
                     <ul class="nav navbar-top-links navbar-right">
@@ -131,18 +133,6 @@ AppAsset::register($this);
     <!-- Script inspinio -->
     <script>
         $(document).ready(function() {
-            setTimeout(function() {
-                toastr.options = {
-                    closeButton: true,
-                    progressBar: true,
-                    showMethod: 'slideDown',
-                    timeOut: 4000
-                };
-                toastr.success('Responsive Admin Theme', 'Welcome to INSPINIA');
-
-            }, 1300);
-
-
             var data1 = [
                 [0,4],[1,8],[2,5],[3,10],[4,4],[5,16],[6,5],[7,11],[8,6],[9,11],[10,30],[11,10],[12,13],[13,4],[14,3],[15,3],[16,6]
             ];
