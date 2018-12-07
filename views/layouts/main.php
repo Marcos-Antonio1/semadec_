@@ -47,18 +47,15 @@ AppAsset::register($this);
                     <li class="active landing_link">
                         <a target="_blank" href="landing.html"><i class="fa fa-th-large"></i> <span class="nav-label">Área Administrativa</span></a>
                     </li>
-                    
                     <li>
-                        <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">Programação</span></a>
+                        <a href="<?= Url::toRoute('esporte/index') ?>"><i class="fa fa-sitemap"></i> <span class="nav-label">Esportes</span></a>
                     </li>
                     <li>
                         <a href="<?= Url::toRoute('evento/index') ?>"><i class="fa fa-globe"></i> <span class="nav-label">Eventos</span><span class="label label-info float-right">NEW</span></a>
                     </li>
-                    
                     <li>
                         <a href="#"><i class="fa fa-table"></i> <span class="nav-label">Classificação</span></a>
                     </li>
-                    
                     <li>
                         <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label">Jogos</span></a>
                     </li>

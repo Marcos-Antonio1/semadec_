@@ -1,7 +1,9 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
+use app\models\Turma;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Time */
@@ -12,9 +14,9 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'tipo')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'tipo')->dropDownList([ 'Feminino' => 'Feminino', 'Masculino' => 'Masculino', 'Misto' => 'Misto', ], ['prompt' => '']) ?>
 
-    <?= $form->field($model, 'idTurma')->textInput() ?>
+    <?= $form->field($model, 'idTurma')->dropDownList(ArrayHelper::map(Turma::find()->All(), 'idTurma', 'Nome')) ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

@@ -12,8 +12,6 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'idTurma')->textInput() ?>
-
     <?= $form->field($model, 'Nome')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'Curso')->textInput(['maxlength' => true]) ?>

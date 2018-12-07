@@ -29,10 +29,8 @@ class Turma extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idTurma', 'Nome', 'Curso'], 'required'],
-            [['idTurma'], 'integer'],
+            [['Nome', 'Curso'], 'required'],
             [['Nome', 'Curso'], 'string', 'max' => 45],
-            [['idTurma'], 'unique'],
         ];
     }
 

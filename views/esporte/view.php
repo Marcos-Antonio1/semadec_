@@ -29,7 +29,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'idEsporte',
-            'nome',
             'categoria',
             'modalidade',
             'quantidade_max',

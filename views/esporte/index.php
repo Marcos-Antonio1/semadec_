@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\EsporteSeach */
+/* @var $searchModel app\models\EsporteSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Yii::t('app', 'Esportes');
@@ -26,11 +26,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'idEsporte',
-            'nome',
             'categoria',
             'modalidade',
             'quantidade_max',
-            //'quantidade_min',
+            'quantidade_min',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

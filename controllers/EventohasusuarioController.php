@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Eventohasusuario;
-use app\models\Eventohasusuarioseach;
+use app\models\Eventohasusuarioseach; 
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
