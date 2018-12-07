@@ -8,6 +8,7 @@ use app\models\Eventohasusuarioseach;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 use app\controllers\EventoController;
 use app\controllers\UsuarioController;
@@ -30,6 +31,32 @@ class EventohasusuarioController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            /*'access' => [
+               'class' => AccessControl::className(),
+               //'only' => ['login', 'logout', 'signup'],
+               'rules' => [
+                   [
+                       'allow' => true,
+                       'actions' => ['index'],
+                       'roles' => ['eventohasusuarioIndex'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['view'],
+                       'roles' => ['eventohasusuarioView'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['create'],
+                       'roles' => ['eventohasusuarioCreate'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['update'],
+                       'roles' => ['eventohasusuarioUpdate'],
+                   ],
+               ],
+           ],*/
         ];
     }
 

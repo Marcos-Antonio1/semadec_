@@ -8,6 +8,7 @@ use app\models\TurmaSeach;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * TurmaController implements the CRUD actions for Turma model.
@@ -26,6 +27,32 @@ class TurmaController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            /*'access' => [
+               'class' => AccessControl::className(),
+               //'only' => ['login', 'logout', 'signup'],
+               'rules' => [
+                   [
+                       'allow' => true,
+                       'actions' => ['index'],
+                       'roles' => ['turmaIndex'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['view'],
+                       'roles' => ['turmaView'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['create'],
+                       'roles' => ['turmaCreate'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['update'],
+                       'roles' => ['turmaUpdate'],
+                   ],
+               ],
+           ], */
         ];
     }
 

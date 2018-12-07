@@ -8,6 +8,7 @@ use app\models\UsuarioSeach;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * UsuarioController implements the CRUD actions for Usuario model.
@@ -25,7 +26,33 @@ class UsuarioController extends Controller
                 'actions' => [
                     'delete' => ['POST'],
                 ],
-            ],
+            ],/*
+           'access' => [
+               'class' => AccessControl::className(),
+               //'only' => ['login', 'logout', 'signup'],
+               'rules' => [
+                   [
+                       'allow' => true,
+                       'actions' => ['index'],
+                       'roles' => ['usuarioIndex'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['view'],
+                       'roles' => ['usuarioView'],
+                   ], 
+                   [
+                       'allow' => true,
+                       'actions' => ['create'],
+                       'roles' => ['usuarioCreate'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['update'],
+                       'roles' => ['usuarioUpdate'],
+                   ],
+               ],
+           ],*/  
         ];
     }
 

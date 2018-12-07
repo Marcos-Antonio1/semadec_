@@ -8,6 +8,7 @@ use app\models\TimeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * TimeController implements the CRUD actions for Time model.
@@ -26,6 +27,32 @@ class TimeController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            /*'access' => [
+               'class' => AccessControl::className(),
+               //'only' => ['login', 'logout', 'signup'],
+               'rules' => [
+                   [
+                       'allow' => true,
+                       'actions' => ['index'],
+                       'roles' => ['timeIndex'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['view'],
+                       'roles' => ['timeView'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['create'],
+                       'roles' => ['timeCreate'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['update'],
+                       'roles' => ['timeUpdate'],
+                   ],
+               ],
+           ],*/
         ];
     }
 

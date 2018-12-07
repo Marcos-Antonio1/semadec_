@@ -8,6 +8,7 @@ use app\models\JogosSeach;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * JogosController implements the CRUD actions for Jogos model.
@@ -26,6 +27,32 @@ class JogosController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            /*'access' => [
+               'class' => AccessControl::className(),
+               //'only' => ['login', 'logout', 'signup'],
+               'rules' => [
+                   [
+                       'allow' => true,
+                       'actions' => ['index'],
+                       'roles' => ['jogosIndex'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['view'],
+                       'roles' => ['jogosView'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['create'],
+                       'roles' => ['jogosCreate'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['update'],
+                       'roles' => ['jogosUpdate'],
+                   ],
+               ],
+           ], */
         ];
     }
 

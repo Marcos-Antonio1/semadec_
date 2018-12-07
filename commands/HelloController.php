@@ -89,7 +89,7 @@ class HelloController extends Controller
         $auth->addChild( $ministrante, $aluno);
         $auth->addChild( $admin, $aluno);
 
-        $auth->assign($admin, 2);
+        $auth->assign($admin);
 
      }
 }
