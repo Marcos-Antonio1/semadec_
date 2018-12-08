@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "evento".
@@ -23,6 +24,11 @@ use Yii;
  */
 class Evento extends \yii\db\ActiveRecord
 {
+    /**
+     * @var UploadedFile
+     */
+    public $imageFile;
+
     /**
      * {@inheritdoc}
      */
@@ -45,6 +51,7 @@ class Evento extends \yii\db\ActiveRecord
             [['descricao'], 'string', 'max' => 240],
             [['idevento'], 'unique'],
             [['semadec_idSemadec'], 'exist', 'skipOnError' => true, 'targetClass' => Semadec::className(), 'targetAttribute' => ['semadec_idSemadec' => 'idSemadec']],
+            [['imageFile'], 'file', 'extensions' => 'jpg'],
         ];
     }
 
@@ -63,6 +70,7 @@ class Evento extends \yii\db\ActiveRecord
             'semadec_idSemadec' => Yii::t('app', 'Semadec'),
             'hora_inicio' => Yii::t('app', 'Hora Inicio'),
             'hora_fim' => Yii::t('app', 'Hora Fim'),
+            'imageFile' => Yii::t('app', 'Imagem File'),
         ];
     }
 
@@ -88,5 +96,12 @@ class Evento extends \yii\db\ActiveRecord
     public function getUsuarios()
     {
         return $this->hasMany(Usuario::className(), ['id' => 'usuario_id'])->viaTable('evento_has_usuario', ['evento_idevento' => 'idevento']);
+    }
+
+    public function upload()
+    {
+        $this->imageFile->saveAs('uploads/' . $this->idevento . '.' . $this->imageFile->extension);
+        return true;
+        
     }
 }

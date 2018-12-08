@@ -12,11 +12,7 @@ $this->title = Yii::t('app', 'Esportes');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="text-center">
-
-    <h1><i class="fas fa-basketball-ball"></i> <?= Html::encode($this->title) ?></h1>
-    <br>
-    <br>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

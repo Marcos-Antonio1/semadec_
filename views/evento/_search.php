@@ -15,15 +15,19 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'idevento') ?>
+    <!-- <?= $form->field($model, 'idevento') ?> -->
+    
+    <?= 
+        $form->field($model, 'Tema')
+        ->label('Pesquisar...', ['class'=>"sr-only"])
+        ->input('text', ['placeholder'=>"Pesquisar..."])
+    ?>
 
-    <?= $form->field($model, 'Tema') ?>
+     <!-- <?= $form->field($model, 'descricao') ?> -->
 
-    <?= $form->field($model, 'descricao') ?>
+    <!-- <?= $form->field($model, 'data') ?> -->
 
-    <?= $form->field($model, 'data') ?>
-
-    <?= $form->field($model, 'horascurriculares') ?>
+    <!-- <?= $form->field($model, 'horascurriculares') ?> -->
 
     <?php // echo $form->field($model, 'tipo') ?>
 
@@ -33,10 +37,10 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'hora_fim') ?>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-default']) ?>
-    </div>
+    </div> -->
 
     <?php ActiveForm::end(); ?>
 

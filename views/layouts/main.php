@@ -33,16 +33,19 @@ AppAsset::register($this);
         <nav class="navbar-default navbar-static-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav metismenu" id="side-menu">
-                    <li class="nav-header">
-                        <div class="dropdown profile-element">
-                            <img alt="image" class="" style="width: 40px" src="img/logo_ifrn.png" alt="IFRN"/>
-                            <span class="block m-t-xs font-bold text-white">SEMADEC</span>
-                            <span class="text-muted text-xs block">Campus Currais Novos</span>
-                        </div>
-                        <div class="logo-element">
-                            <img alt="image" class="" style="width: 40px" src="img/logo_ifrn.png" alt="IFRN"/>
-                        </div>
+                    <li class="nav-header bg-dark">
+                        <a href="<?= Url::toRoute('site/index') ?>">
+                            <div class="dropdown profile-element">
+                                <img alt="image" class="" style="width: 40px" src="img/logo_ifrn.png" alt="IFRN"/>
+                                <span class="block m-t-xs font-bold text-white">SEMADEC</span>
+                                <span class="text-muted text-xs block">Campus Currais Novos</span>
+                            </div>
+                            <div class="logo-element">
+                                <img alt="image" class="" style="width: 40px" src="img/logo_ifrn.png" alt="IFRN"/>
+                            </div>
+                        </a>
                     </li>
+                    
 
                     <?php if(!Yii::$app->user->isGuest && Yii::$app->user->identity->tipo === "admin")
                     {
@@ -80,15 +83,15 @@ AppAsset::register($this);
                         <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#">
                             <i class="fa fa-bars"></i> 
                         </a>
-
-                        
                     </div>
 
-                    <ul class="nav navbar-top-links navbar-right">
+                    <ul class="nav navbar-top">
                         <li style="padding: 20px">
-                            <span class="m-r-sm text-muted welcome-message"><?= Yii::t('app', 'Welcome to Semadec.'); ?></span>
-                        </li>
-                    
+                        <h1 class="text-center font-weight-bold" style="font-size: 20px; margin: 0px 0;"><?= Html::encode($this->title) ?></h1>
+                        <li>
+                    </ul>
+
+                    <ul class="nav navbar-top-links navbar-right">                 
                         <li>
                             <?php if (Yii::$app->user->isGuest)
                             {

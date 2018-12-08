@@ -20,6 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= $model->tipo ?>
         </div>
         <div class="card-body">
+            <img class="card-img-top" src="uploads/<?= $model->idevento ?>.jpg" alt="Card image cap">
             <h5 class="card-title font-weight-bold"><?= $model->Tema ?></h5>
             <p class="card-text"><?= $model->descricao ?></p>
             <p class="card-text"><?= 'Horas curriculares: ' . $model->horascurriculares ?></p>

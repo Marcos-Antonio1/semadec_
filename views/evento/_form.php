@@ -12,7 +12,7 @@ use app\models\Semadec;
 
 <div class="evento-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'Tema')->textInput(['maxlength' => true]) ?>
 
@@ -29,6 +29,8 @@ use app\models\Semadec;
     <?= $form->field($model, 'hora_inicio')->textInput(['type' => 'time']) ?>
 
     <?= $form->field($model, 'hora_fim')->textInput(['type' => 'time']) ?>
+
+    <?= $form->field($model, 'imageFile')->fileInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

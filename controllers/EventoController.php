@@ -6,9 +6,12 @@ use Yii;
 use app\models\Evento;
 use app\models\EventoSearch;
 use app\models\Eventohasusuario;
+use app\models\UploadForm;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\UploadedFile;
 use yii\filters\VerbFilter;
+
 
 /**
  * EventoController implements the CRUD actions for Evento model.
@@ -67,7 +70,10 @@ class EventoController extends Controller
     {
         $model = new Evento();
 
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+                $model->upload();
             return $this->redirect(['view', 'id' => $model->idevento]);
         }
 

@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "esporte".
@@ -17,6 +18,7 @@ use Yii;
  */
 class Esporte extends \yii\db\ActiveRecord
 {
+
     /**
      * {@inheritdoc}
      */
