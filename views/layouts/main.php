@@ -50,17 +50,19 @@ AppAsset::register($this);
                     <?php if(!Yii::$app->user->isGuest && Yii::$app->user->identity->tipo === "admin")
                     {
                         echo '<li class="active landing_link">
-                            <a target="_blank" href="' . Url::toRoute('usuario/adm') . '"><i class="fa fa-th-large"></i> <span class="nav-label">Área Administrativa</span></a>
+                            <a href="' . Url::toRoute('usuario/adm') . '"><i class="fa fa-th-large"></i> <span class="nav-label">Área Administrativa</span></a>
                         </li>';
                     }
                     ?>
 
-                    
+                    <li>
+                        <a href="<?= Url::toRoute('campeonato/index') ?>"><i class="fa fa-sitemap"></i> <span class="nav-label">Campeonatos</span></a>
+                    </li>
                     <li>
                         <a href="<?= Url::toRoute('esporte/index') ?>"><i class="fa fa-sitemap"></i> <span class="nav-label">Esportes</span></a>
                     </li>
                     <li>
-                        <a href="<?= Url::toRoute('evento/index') ?>"><i class="fa fa-globe"></i> <span class="nav-label">Eventos</span><span class="label label-info float-right">NEW</span></a>
+                        <a href="<?= Url::toRoute('evento/index') ?>"><i class="fa fa-globe"></i> <span class="nav-label">Eventos</span></a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-table"></i> <span class="nav-label">Classificação</span></a>

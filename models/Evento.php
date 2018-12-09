@@ -100,7 +100,7 @@ class Evento extends \yii\db\ActiveRecord
 
     public function upload()
     {
-        $this->imageFile->saveAs('uploads/' . $this->idevento . '.' . $this->imageFile->extension);
+        $this->imageFile->saveAs('uploads/eventos/' . $this->idevento . '.jpg');
         return true;
         
     }

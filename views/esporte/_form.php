@@ -19,6 +19,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'quantidade_max')->textInput() ?>
 
     <?= $form->field($model, 'quantidade_min')->textInput() ?>
+    
+    <?= $form->field($model, 'imageFile')->fileInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

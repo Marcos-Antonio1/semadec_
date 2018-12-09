@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'class' => 'yii\grid\ActionColumn',
                 'header' => "Ações", 
-                'template' => '{view} {campeonato}',
+                'template' => '{view} {campeonato} {update}',
                 'buttons' => [
                     'view' => function ($url) {
                         return Html::a('<i class="fas fa-info-circle"></i> ', $url,  ['class' => 'btn btn-primary']);
