@@ -28,7 +28,7 @@ class EsporteController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
-           /* 'access' => [
+            'access' => [
                'class' => AccessControl::className(),
                //'only' => ['login', 'logout', 'signup'],
                'rules' => [
@@ -53,7 +53,7 @@ class EsporteController extends Controller
                        'roles' => ['esporteUpdate'],
                    ],
                ],
-           ],*/
+           ],
         ];
     }
 

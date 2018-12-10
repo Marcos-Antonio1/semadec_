@@ -26,8 +26,8 @@ class UsuarioController extends Controller
                 'actions' => [
                     'delete' => ['POST'],
                 ],
-            ],/*
-           'access' => [
+            ],
+            'access' => [
                'class' => AccessControl::className(),
                //'only' => ['login', 'logout', 'signup'],
                'rules' => [
@@ -40,7 +40,7 @@ class UsuarioController extends Controller
                        'allow' => true,
                        'actions' => ['view'],
                        'roles' => ['usuarioView'],
-                   ], 
+                   ],
                    [
                        'allow' => true,
                        'actions' => ['create'],
@@ -52,7 +52,7 @@ class UsuarioController extends Controller
                        'roles' => ['usuarioUpdate'],
                    ],
                ],
-           ],*/  
+           ],
         ];
     }
 
@@ -72,6 +72,16 @@ class UsuarioController extends Controller
     }
 
     /**
+     * Lists all Usuario models.
+     * @return mixed
+     */
+    public function actionAdm()
+    {
+
+        return $this->render('adm');
+    }
+
+    /**
      * Displays a single Usuario model.
      * @param integer $id
      * @return mixed
@@ -82,9 +92,6 @@ class UsuarioController extends Controller
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
-    }
-    public function actionAdm(){
-        return $this->render('adm');
     }
 
     /**
@@ -97,16 +104,16 @@ class UsuarioController extends Controller
         $model = new Usuario();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            if ($model->tipo === 'aluno')
+          /*  if ($model->tipo === 'aluno')
             {
                 return $this->render('alunohastime/create', [
                     'model' => $model,
                 ]);
             }
             else
-            {
+            {*/
                 return $this->redirect(['view', 'id' => $model->id]);
-            }
+            //}
         }
 
         return $this->render('create', [

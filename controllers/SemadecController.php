@@ -27,20 +27,21 @@ class SemadecController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
-            /*'access' => [
+            'access' => [
                'class' => AccessControl::className(),
                //'only' => ['login', 'logout', 'signup'],
                'rules' => [
-                   [
-                       'allow' => true,
-                       'actions' => ['index'],
-                       'roles' => ['semadecIndex'],
-                   ],
-                   [
-                       'allow' => true,
-                       'actions' => ['view'],
-                       'roles' => ['semadecView'],
-                   ],
+                 [
+                     'allow' => true,
+                     'actions' => ['view'],
+                     'roles' => ['semadecView'],
+                 ],
+                 [
+                     'allow' => true,
+                     'actions' => ['index'],
+                     'roles' => ['semadecIndex'],
+                 ],
+
                    [
                        'allow' => true,
                        'actions' => ['create'],
@@ -52,7 +53,7 @@ class SemadecController extends Controller
                        'roles' => ['semadecUpdate'],
                    ],
                ],
-           ],*/
+           ],
         ];
     }
 

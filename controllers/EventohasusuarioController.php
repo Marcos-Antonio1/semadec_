@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Eventohasusuario;
-use app\models\Eventohasusuarioseach; 
+use app\models\Eventohasusuarioseach;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -18,7 +18,7 @@ use app\controllers\UsuarioController;
  */
 class EventohasusuarioController extends Controller
 {
-    
+
     /**
      * {@inheritdoc}
      */
@@ -31,10 +31,10 @@ class EventohasusuarioController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
-            /*'access' => [
+          /*  'access' => [
                'class' => AccessControl::className(),
                //'only' => ['login', 'logout', 'signup'],
-               'rules' => [
+               /*'rules' => [
                    [
                        'allow' => true,
                        'actions' => ['index'],
@@ -125,7 +125,7 @@ class EventohasusuarioController extends Controller
         $model->evento_idevento = $evento_idevento;
         $model->usuario_id = Yii::$app->user->id;
         $model->save();
-        
+
         return $this->redirect(['view', 'evento_idevento' => $model->evento_idevento, 'usuario_id' => $model->usuario_id]);
     }
 

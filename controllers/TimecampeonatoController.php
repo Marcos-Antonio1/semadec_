@@ -27,7 +27,7 @@ class TimecampeonatoController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
-            /*'access' => [
+            'access' => [
                'class' => AccessControl::className(),
                //'only' => ['login', 'logout', 'signup'],
                'rules' => [
@@ -52,7 +52,7 @@ class TimecampeonatoController extends Controller
                        'roles' => ['timecampeonatoUpdate'],
                    ],
                ],
-           ],*/
+           ],
         ];
     }
 

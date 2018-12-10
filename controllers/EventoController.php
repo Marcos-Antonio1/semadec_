@@ -29,7 +29,7 @@ class EventoController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
-           /* 'access' => [
+           'access' => [
                'class' => AccessControl::className(),
                //'only' => ['login', 'logout', 'signup'],
                'rules' => [
@@ -54,7 +54,7 @@ class EventoController extends Controller
                        'roles' => ['eventoUpdate'],
                    ],
                ],
-           ],*/
+           ],
         ];
     }
 

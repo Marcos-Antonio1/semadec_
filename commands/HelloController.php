@@ -31,18 +31,18 @@ class HelloController extends Controller
         echo $message . "\n";
 
         return ExitCode::OK;
-    }
-     public function actionPermissao(){
-         $auth = Yii::$app->authManager;
+          }
 
-        $auth->removeAll();
+        public function permissao(){
+          $auth =Yii::$app->authManager;
+          $auth->removeAll();
 
-        $admin = $auth->createRole('admin');
-        $aluno = $auth->createRole('aluno');
-        $ministrante =$auth->createRole('ministrante');
+          $admin =$auth->createRole('admin');
+          $aluno=$auth->createRole('aluno');
+          $ministante=$auth->createRole('ministrante');
 
-        $auth->add($admin);
-        $auth->add($aluno);
+          $auth->add($admin);
+          $auth->add($aluno);
         $auth->add($ministrante);
 
         $controles = ['usuario', 'turma', 'time_campeonato', 'time','semadec','jogos','eventohasusuario','evento','esporte','campeonato','alunohastime'];
@@ -74,22 +74,8 @@ class HelloController extends Controller
                 $auth->addChild($aluno, $perm);
             }
         }
-
-         /*$controles = ['usuario','turma','time_campeonato','time','semadec','jogos','eventohasusuario','evento','esporte','campeonato','alunohastime'];
-
-         $permissoes=['index','view'];
-            foreach ($controles as $controle) {
-                foreach ($permissoes as $permissao) {
-                    $perm=$auth->createPermission($controle.ucfirst($permissao));
-                    $auth->add($perm);
-                    $auth->addChild($ministrante,$perm);
-                }
-            }*/
-
         $auth->addChild( $ministrante, $aluno);
         $auth->addChild( $admin, $aluno);
-
-        $auth->assign($admin);
-
-     }
+        $auth->assign($admin, 1);
+                }
 }
