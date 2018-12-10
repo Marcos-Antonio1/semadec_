@@ -33,25 +33,36 @@ AppAsset::register($this);
         <nav class="navbar-default navbar-static-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav metismenu" id="side-menu">
-                    <li class="nav-header">
-                        <div class="dropdown profile-element">
-                            <img alt="image" class="" style="width: 40px" src="img/logo_ifrn.png" alt="IFRN"/>
-                            <span class="block m-t-xs font-bold text-white">SEMADEC</span>
-                            <span class="text-muted text-xs block">Campus Currais Novos</span>
-                        </div>
-                        <div class="logo-element">
-                            <img alt="image" class="" style="width: 40px" src="img/logo_ifrn.png" alt="IFRN"/>
-                        </div>
+                    <li class="nav-header bg-dark">
+                        <a href="<?= Url::toRoute('site/index') ?>">
+                            <div class="dropdown profile-element">
+                                <img alt="image" class="" style="width: 40px" src="img/logo_ifrn.png" alt="IFRN"/>
+                                <span class="block m-t-xs font-bold text-white">SEMADEC</span>
+                                <span class="text-muted text-xs block">Campus Currais Novos</span>
+                            </div>
+                            <div class="logo-element">
+                                <img alt="image" class="" style="width: 40px" src="img/logo_ifrn.png" alt="IFRN"/>
+                            </div>
+                        </a>
                     </li>
+                    
 
-                    <li class="active landing_link">
-                        <a target="_blank" href="landing.html"><i class="fa fa-th-large"></i> <span class="nav-label">Área Administrativa</span></a>
+                    <?php if(!Yii::$app->user->isGuest && Yii::$app->user->identity->tipo === "admin")
+                    {
+                        echo '<li class="active landing_link">
+                            <a href="' . Url::toRoute('usuario/adm') . '"><i class="fa fa-th-large"></i> <span class="nav-label">Área Administrativa</span></a>
+                        </li>';
+                    }
+                    ?>
+
+                    <li>
+                        <a href="<?= Url::toRoute('campeonato/index') ?>"><i class="fa fa-sitemap"></i> <span class="nav-label">Campeonatos</span></a>
                     </li>
                     <li>
                         <a href="<?= Url::toRoute('esporte/index') ?>"><i class="fa fa-sitemap"></i> <span class="nav-label">Esportes</span></a>
                     </li>
                     <li>
-                        <a href="<?= Url::toRoute('evento/index') ?>"><i class="fa fa-globe"></i> <span class="nav-label">Eventos</span><span class="label label-info float-right">NEW</span></a>
+                        <a href="<?= Url::toRoute('evento/index') ?>"><i class="fa fa-globe"></i> <span class="nav-label">Eventos</span></a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-table"></i> <span class="nav-label">Classificação</span></a>
@@ -74,19 +85,15 @@ AppAsset::register($this);
                         <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#">
                             <i class="fa fa-bars"></i> 
                         </a>
-
-                        <form role="search" class="navbar-form-custom" action="search_results.html">
-                            <div class="form-group">
-                                <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
-                            </div>
-                        </form>
                     </div>
 
-                    <ul class="nav navbar-top-links navbar-right">
+                    <ul class="nav navbar-top">
                         <li style="padding: 20px">
-                            <span class="m-r-sm text-muted welcome-message"><?= Yii::t('app', 'Welcome to Semadec.'); ?></span>
-                        </li>
-                    
+                        <h1 class="text-center font-weight-bold" style="font-size: 20px; margin: 0px 0;"><?= Html::encode($this->title) ?></h1>
+                        <li>
+                    </ul>
+
+                    <ul class="nav navbar-top-links navbar-right">                 
                         <li>
                             <?php if (Yii::$app->user->isGuest)
                             {
@@ -131,18 +138,6 @@ AppAsset::register($this);
     <!-- Script inspinio -->
     <script>
         $(document).ready(function() {
-            setTimeout(function() {
-                toastr.options = {
-                    closeButton: true,
-                    progressBar: true,
-                    showMethod: 'slideDown',
-                    timeOut: 4000
-                };
-                toastr.success('Responsive Admin Theme', 'Welcome to INSPINIA');
-
-            }, 1300);
-
-
             var data1 = [
                 [0,4],[1,8],[2,5],[3,10],[4,4],[5,16],[6,5],[7,11],[8,6],[9,11],[10,30],[11,10],[12,13],[13,4],[14,3],[15,3],[16,6]
             ];

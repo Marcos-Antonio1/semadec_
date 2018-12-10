@@ -7,6 +7,7 @@ use app\models\Esporte;
 use app\models\EsporteSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\UploadedFile;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
@@ -95,6 +96,8 @@ class EsporteController extends Controller
         $model = new Esporte();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            $model->upload();
             return $this->redirect(['view', 'id' => $model->idEsporte]);
         }
 
@@ -115,6 +118,8 @@ class EsporteController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            $model->upload();
             return $this->redirect(['view', 'id' => $model->idEsporte]);
         }
 

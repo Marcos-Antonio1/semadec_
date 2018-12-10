@@ -14,6 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php  // echo $this->render('_search', ['model' => $searchModel]); ?>
+<<<<<<< HEAD
     <div class="row">
         <div class="col-md-4">
             <div class="card" style="width: 60%">
@@ -96,4 +97,46 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
     </div>
+=======
+
+    <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Categoria</th>
+      <th scope="col">Controles</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Aluno - Administrador - Ministrante</td>
+      <td>
+            <?= Html::a('<i class="fas fa-plus-square"></i> ' . Yii::t('app', 'Cadastrar'), ['create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('<i class="fas fa-cogs"></i> ' . Yii::t('app', 'Gerenciar'), ['index'], ['class' => 'btn btn-danger']) ?>
+      </td>
+    </tr>
+    <tr>
+      <td>Evento</td>
+      <td>
+            <?= Html::a('<i class="fas fa-plus-square"></i> ' . Yii::t('app', 'Cadastrar'), ['evento/create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('<i class="fas fa-cogs"></i> ' . Yii::t('app', 'Gerenciar'), ['evento/index'], ['class' => 'btn btn-danger']) ?>
+      </td>
+    </tr>
+    <tr>
+      <td>Esportes</td>
+      <td>
+            <?= Html::a('<i class="fas fa-plus-square"></i> ' . Yii::t('app', 'Cadastrar'), ['esportes/create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('<i class="fas fa-cogs"></i> ' . Yii::t('app', 'Gerenciar'), ['esporte/index'], ['class' => 'btn btn-danger']) ?>
+      </td>
+    </tr>
+    <tr>
+      <td>Campeonato</td>
+      <td>
+            <?= Html::a('<i class="fas fa-plus-square"></i> ' . Yii::t('app', 'Cadastrar'), ['campeonato/create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('<i class="fas fa-cogs"></i> ' . Yii::t('app', 'Gerenciar'), ['campeonato/index'], ['class' => 'btn btn-danger']) ?>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+>>>>>>> 41ee75bd80156f0b8df915993f51129a9de50c3b
 </div>

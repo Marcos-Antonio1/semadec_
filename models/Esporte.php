@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "esporte".
@@ -17,6 +18,11 @@ use Yii;
  */
 class Esporte extends \yii\db\ActiveRecord
 {
+    /**
+     * @var UploadedFile
+     */
+    public $imageFile;
+
     /**
      * {@inheritdoc}
      */
@@ -34,6 +40,7 @@ class Esporte extends \yii\db\ActiveRecord
             [['categoria', 'modalidade', 'quantidade_max', 'quantidade_min'], 'required'],
             [['categoria', 'modalidade'], 'string'],
             [['quantidade_max', 'quantidade_min'], 'integer'],
+            [['imageFile'], 'file', 'extensions' => 'jpg'],
         ];
     }
 
@@ -48,6 +55,7 @@ class Esporte extends \yii\db\ActiveRecord
             'modalidade' => Yii::t('app', 'Modalidade'),
             'quantidade_max' => Yii::t('app', 'Quantidade Max'),
             'quantidade_min' => Yii::t('app', 'Quantidade Min'),
+            'imageFile' => Yii::t('app', 'Imagem File'),
         ];
     }
 
@@ -57,5 +65,12 @@ class Esporte extends \yii\db\ActiveRecord
     public function getCampeonatos()
     {
         return $this->hasMany(Campeonato::className(), ['idEsporte' => 'idEsporte']);
+    }
+
+    public function upload()
+    {
+        $this->imageFile->saveAs('uploads/esportes/' . $this->idEsporte . '.jpg');
+        return true;
+        
     }
 }
