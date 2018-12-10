@@ -15,19 +15,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1 class="text-center font-weight-bold"><?= Html::encode($this->title) ?></h1>
     <br>
 
-    <div class="card text-center">
-        <div class="card-header">
-            <?= $model->tipo ?>
-        </div>
-        <div class="card-body">
-            <img class="card-img-top" src="uploads/<?= $model->idevento ?>.jpg" alt="Card image cap">
-            <h5 class="card-title font-weight-bold"><?= $model->Tema ?></h5>
+    <div class="card text-center text-light">
+        <img class="card-img" src="uploads/eventos/<?= $model->idevento ?>.jpg" alt="Card image cap">
+        <div class="card-img-overlay">
+            <h1 class="card-title font-weight-bold"><?= $model->Tema ?></h1>
             <p class="card-text"><?= $model->descricao ?></p>
             <p class="card-text"><?= 'Horas curriculares: ' . $model->horascurriculares ?></p>
+            <p><?= 'data: ' . $model->data . ' das ' . $model->hora_inicio . ' as ' . $model->hora_fim ?></p>
             <?= Html::a(Yii::t('app', 'Inscrever'), ['eventohasusuario/inscricao', 'evento_idevento' => $model->idevento], ['class' => 'btn btn-primary']) ?>
-        </div>
-        <div class="card-footer text-muted">
-            <?= 'data: ' . $model->data . ' das ' . $model->hora_inicio . ' as ' . $model->hora_fim ?> 
         </div>
     </div>
 

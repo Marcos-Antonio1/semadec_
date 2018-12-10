@@ -93,6 +93,11 @@ class EventoController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            if(!($model->imageFile == null))
+            {
+                $model->upload();
+            }
             return $this->redirect(['view', 'id' => $model->idevento]);
         }
 

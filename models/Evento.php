@@ -15,6 +15,7 @@ use yii\web\UploadedFile;
  * @property int $horascurriculares
  * @property string $tipo
  * @property int $semadec_idSemadec
+ * @property int $max_usuarios
  * @property string $hora_inicio
  * @property string $hora_fim
  *
@@ -44,14 +45,14 @@ class Evento extends \yii\db\ActiveRecord
     {
         return [
             [['Tema', 'descricao', 'data', 'semadec_idSemadec'], 'required'],
-            [['idevento', 'horascurriculares', 'semadec_idSemadec'], 'integer'],
+            [['idevento', 'horascurriculares', 'semadec_idSemadec', 'max_usuarios'], 'integer'],
             [['data', 'hora_inicio', 'hora_fim'], 'safe'],
             [['tipo'], 'string'],
             [['Tema'], 'string', 'max' => 100],
             [['descricao'], 'string', 'max' => 240],
             [['idevento'], 'unique'],
             [['semadec_idSemadec'], 'exist', 'skipOnError' => true, 'targetClass' => Semadec::className(), 'targetAttribute' => ['semadec_idSemadec' => 'idSemadec']],
-            [['imageFile'], 'file', 'extensions' => 'jpg'],
+            [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'jpg'],
         ];
     }
 
@@ -70,6 +71,7 @@ class Evento extends \yii\db\ActiveRecord
             'semadec_idSemadec' => Yii::t('app', 'Semadec'),
             'hora_inicio' => Yii::t('app', 'Hora Inicio'),
             'hora_fim' => Yii::t('app', 'Hora Fim'),
+            'max_usuarios' => Yii::t('app', 'Max Usuarios'),
             'imageFile' => Yii::t('app', 'Imagem File'),
         ];
     }
@@ -100,8 +102,10 @@ class Evento extends \yii\db\ActiveRecord
 
     public function upload()
     {
-        $this->imageFile->saveAs('uploads/eventos/' . $this->idevento . '.jpg');
-        return true;
-        
+        if ($this->validate()) {
+            $this->imageFile->saveAs('uploads/eventos/' . $this->idevento . '.jpg');
+            return true;
+        }
+        return false;
     }
 }

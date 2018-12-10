@@ -79,14 +79,9 @@ class UsuarioController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if ($model->tipo === 'aluno')
             {
-                return $this->render('alunohastime/create', [
-                    'model' => $model,
-                ]);
+                return $this->redirect(['alunohastime/create']);
             }
-            else
-            {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -135,7 +130,7 @@ class UsuarioController extends Controller
      * @return Usuario the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    public function findModel($id)
     {
         if (($model = Usuario::findOne($id)) !== null) {
             return $model;

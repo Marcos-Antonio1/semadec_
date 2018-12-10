@@ -20,7 +20,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'formacao')->textInput(['maxlength' => true]) ?>
 
+    <?php if(!Yii::$app->user->isGuest && Yii::$app->user->identity->tipo === "admin"): ?>
+
     <?= $form->field($model, 'tipo')->dropDownList(['aluno' => 'Aluno', 'admin' => 'Admin', 'ministrante' => 'Ministrante', ]) ?>
+
+    <?php else: ?>
+
+    <?= $form->field($model, 'tipo')->dropDownList(['aluno' => 'Aluno']) ?>
+
+    <?php endif; ?>
 
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 

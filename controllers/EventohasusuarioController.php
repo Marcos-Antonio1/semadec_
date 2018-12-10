@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Eventohasusuario;
+use app\models\Evento;
 use app\models\Eventohasusuarioseach; 
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -94,12 +95,22 @@ class EventohasusuarioController extends Controller
      */
     public function actionInscricao($evento_idevento)
     {
-        $model = new Eventohasusuario();
-        $model->evento_idevento = $evento_idevento;
-        $model->usuario_id = Yii::$app->user->id;
-        $model->save();
-        
-        return $this->redirect(['view', 'evento_idevento' => $model->evento_idevento, 'usuario_id' => $model->usuario_id]);
+        if(!Yii::$app->user->isGuest && Yii::$app->user->identity->tipo !== "admin")
+        {
+            $model = Evento::findOne($evento_idevento);
+            $models = $this->findInscritos($evento_idevento);
+            if ($model->max_usuarios !== sizeof($models))
+            {
+                $model = new Eventohasusuario();
+                $model->evento_idevento = $evento_idevento;
+                $model->usuario_id = Yii::$app->user->id;
+                $model->save();
+            
+            return $this->redirect(['view', 'evento_idevento' => $model->evento_idevento, 'usuario_id' => $model->usuario_id]);
+            }
+        }else{
+            return $this->redirect(['site/index']);
+        }
     }
 
     /**

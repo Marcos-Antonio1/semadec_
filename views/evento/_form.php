@@ -30,6 +30,8 @@ use app\models\Semadec;
 
     <?= $form->field($model, 'hora_fim')->textInput(['type' => 'time']) ?>
 
+    <?= $form->field($model, 'max_usuarios')->Input('number') ?>
+
     <?= $form->field($model, 'imageFile')->fileInput() ?>
 
     <div class="form-group">

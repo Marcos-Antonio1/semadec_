@@ -5,38 +5,43 @@
 /* @var $model app\models\LoginForm */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\ActiveForm;
 
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="text-center  mx-auto col-md-4">
 
-    <p>Please fill out the following fields to login:</p>
+    <?php $form = ActiveForm::begin(['options' => ['class' => 'form-signin']]) ?>
+        <br>
+        <br>
+        <img class="mb-4" src="img/logo_ifrn.png" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        
+        <?= $form->field($model, 'username')
+            ->textInput(['autofocus' => true, 'id' => "inputEmail", 'class' => "form-control", 'placeholder' => "Usuário"])
+            ->label('Email address', ['for' => "inputEmail", 'class' => "sr-only"])
+        ?>
+        
+        <?= $form->field($model, 'password')
+            ->passwordInput(['id' => "inputPassword", 'class' => "form-control", 'placeholder' => "Senha"])
+            ->label('Senha', ['for' => "inputPassword", 'class' => "sr-only"])
+        ?>
 
-    <?php $form = ActiveForm::begin([
-        'id' => 'login-form',
-        'layout' => 'horizontal',
-        'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-1 control-label'],
-        ],
-    ]); ?>
-
-        <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-
-        <?= $form->field($model, 'password')->passwordInput() ?>
-
-        <?= $form->field($model, 'rememberMe')->checkbox([
-            'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-        ]) ?>
-
-        <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-11">
-                <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-            </div>
+        <div class="checkbox mb-3">
+            <label>
+                <?= $form->field($model, 'rememberMe')->checkbox() ?>
+            </label>
         </div>
+        
+        <div class="form-group">
+                <?= Html::submitButton('Login', ['class' => 'btn btn-lg btn-primary btn-block', 'name' => 'login-button']) ?>
+        </div>
+
+        <a href="<?= Url::toRoute('usuario/create') ?>">Cadastre-se</a>
+        
+        <p class="mt-5 mb-3 text-muted">&copy; 2018</p>
 
     <?php ActiveForm::end(); ?>
 </div>

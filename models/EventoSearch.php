@@ -18,7 +18,7 @@ class EventoSearch extends Evento
     public function rules()
     {
         return [
-            [['idevento', 'horascurriculares', 'semadec_idSemadec'], 'integer'],
+            [['idevento', 'horascurriculares', 'semadec_idSemadec', 'max_usuarios'], 'integer'],
             [['Tema', 'descricao', 'data', 'tipo', 'hora_inicio', 'hora_fim'], 'safe'],
         ];
     }
@@ -65,6 +65,7 @@ class EventoSearch extends Evento
             'semadec_idSemadec' => $this->semadec_idSemadec,
             'hora_inicio' => $this->hora_inicio,
             'hora_fim' => $this->hora_fim,
+            'max_usuarios' => $this->max_usuarios,
         ]);
 
         $query->andFilterWhere(['like', 'Tema', $this->Tema])
