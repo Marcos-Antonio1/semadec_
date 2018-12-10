@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\models\Time;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Jogos */
@@ -18,7 +20,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'colocacao')->textInput() ?>
 
-    <?= $form->field($model, 'idTime1')->textInput() ?>
+    <?= $form->field($model, 'idTime1')->dropDownList(ArrayHelper::map(Time::find()->All(), 'idTime1','tipo')) ?>
 
     <?= $form->field($model, 'idTime2')->textInput() ?>
 

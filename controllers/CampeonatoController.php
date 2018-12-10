@@ -10,6 +10,7 @@ use app\controllers\EsporteController;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * CampeonatoController implements the CRUD actions for Campeonato model.
@@ -28,6 +29,32 @@ class CampeonatoController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+               'class' => AccessControl::className(),
+               //'only' => ['login', 'logout', 'signup'],
+               'rules' => [
+                   [
+                       'allow' => true,
+                       'actions' => ['index'],
+                       'roles' => ['campeonatoIndex'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['view'],
+                       'roles' => ['campeonatoView'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['create'],
+                       'roles' => ['campeonatoCreate'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['update'],
+                       'roles' => ['campeonatoUpdate'],
+                   ],
+               ],
+           ],
         ];
     }
 

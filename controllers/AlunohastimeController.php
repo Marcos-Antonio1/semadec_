@@ -8,6 +8,7 @@ use app\models\AlunohastimeSeach;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * AlunohastimeController implements the CRUD actions for Alunohastime model.
@@ -26,7 +27,34 @@ class AlunohastimeController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+           'access' => [
+               'class' => AccessControl::className(),
+               //'only' => ['login', 'logout', 'signup'],
+               'rules' => [
+                   [
+                       'allow' => true,
+                       'actions' => ['index'],
+                       'roles' => ['alunohastimeIndex'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['view'],
+                       'roles' => ['alunohastimeView'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['create'],
+                       'roles' => ['alunohastimeCreate'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['update'],
+                       'roles' => ['alunohastimeUpdate'],
+                   ],
+               ],
+           ],
         ];
+
     }
 
     /**

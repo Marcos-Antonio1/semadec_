@@ -8,6 +8,7 @@ use app\models\UsuarioSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * UsuarioController implements the CRUD actions for Usuario model.
@@ -26,6 +27,32 @@ class UsuarioController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+               'class' => AccessControl::className(),
+               //'only' => ['login', 'logout', 'signup'],
+               'rules' => [
+                   [
+                       'allow' => true,
+                       'actions' => ['index'],
+                       'roles' => ['usuarioIndex'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['view'],
+                       'roles' => ['usuarioView'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['create'],
+                       'roles' => ['usuarioCreate'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['update'],
+                       'roles' => ['usuarioUpdate'],
+                   ],
+               ],
+           ],
         ];
     }
 
@@ -77,11 +104,22 @@ class UsuarioController extends Controller
         $model = new Usuario();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            if ($model->tipo === 'aluno')
+          /*  if ($model->tipo === 'aluno')
             {
+<<<<<<< HEAD
                 return $this->redirect(['alunohastime/create']);
             }
             return $this->redirect(['view', 'id' => $model->id]);
+=======
+                return $this->render('alunohastime/create', [
+                    'model' => $model,
+                ]);
+            }
+            else
+            {*/
+                return $this->redirect(['view', 'id' => $model->id]);
+            //}
+>>>>>>> acde9fd784cc0350b9637d672ae4d957c038b815
         }
 
         return $this->render('create', [

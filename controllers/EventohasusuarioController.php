@@ -4,11 +4,16 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Eventohasusuario;
+<<<<<<< HEAD
 use app\models\Evento;
 use app\models\Eventohasusuarioseach; 
+=======
+use app\models\Eventohasusuarioseach;
+>>>>>>> acde9fd784cc0350b9637d672ae4d957c038b815
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 use app\controllers\EventoController;
 use app\controllers\UsuarioController;
@@ -18,7 +23,7 @@ use app\controllers\UsuarioController;
  */
 class EventohasusuarioController extends Controller
 {
-    
+
     /**
      * {@inheritdoc}
      */
@@ -31,6 +36,32 @@ class EventohasusuarioController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+          /*  'access' => [
+               'class' => AccessControl::className(),
+               //'only' => ['login', 'logout', 'signup'],
+               /*'rules' => [
+                   [
+                       'allow' => true,
+                       'actions' => ['index'],
+                       'roles' => ['eventohasusuarioIndex'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['view'],
+                       'roles' => ['eventohasusuarioView'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['create'],
+                       'roles' => ['eventohasusuarioCreate'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['update'],
+                       'roles' => ['eventohasusuarioUpdate'],
+                   ],
+               ],
+           ],*/
         ];
     }
 
@@ -95,6 +126,7 @@ class EventohasusuarioController extends Controller
      */
     public function actionInscricao($evento_idevento)
     {
+<<<<<<< HEAD
         if(!Yii::$app->user->isGuest && Yii::$app->user->identity->tipo !== "admin")
         {
             $model = Evento::findOne($evento_idevento);
@@ -111,6 +143,14 @@ class EventohasusuarioController extends Controller
         }else{
             return $this->redirect(['site/index']);
         }
+=======
+        $model = new Eventohasusuario();
+        $model->evento_idevento = $evento_idevento;
+        $model->usuario_id = Yii::$app->user->id;
+        $model->save();
+
+        return $this->redirect(['view', 'evento_idevento' => $model->evento_idevento, 'usuario_id' => $model->usuario_id]);
+>>>>>>> acde9fd784cc0350b9637d672ae4d957c038b815
     }
 
     /**

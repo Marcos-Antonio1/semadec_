@@ -8,6 +8,7 @@ use app\models\SemadecSeach;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * SemadecController implements the CRUD actions for Semadec model.
@@ -26,6 +27,33 @@ class SemadecController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+               'class' => AccessControl::className(),
+               //'only' => ['login', 'logout', 'signup'],
+               'rules' => [
+                 [
+                     'allow' => true,
+                     'actions' => ['view'],
+                     'roles' => ['semadecView'],
+                 ],
+                 [
+                     'allow' => true,
+                     'actions' => ['index'],
+                     'roles' => ['semadecIndex'],
+                 ],
+
+                   [
+                       'allow' => true,
+                       'actions' => ['create'],
+                       'roles' => ['semadecCreate'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['update'],
+                       'roles' => ['semadecUpdate'],
+                   ],
+               ],
+           ],
         ];
     }
 

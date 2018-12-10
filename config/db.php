@@ -1,9 +1,9 @@
 <?php
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=semadec',
+    'dsn' => 'mysql:host=localhost;dbname=semadec_final',
     'username' => 'root',
-    'password' => '123456',
+    'password' => '',
     'charset' => 'utf8',
     // Schema cache options (for production environment)
     //'enableSchemaCache' => true,

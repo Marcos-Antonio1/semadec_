@@ -8,6 +8,7 @@ use app\models\TimecampeonatoSeach;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * TimecampeonatoController implements the CRUD actions for TimeCampeonato model.
@@ -26,6 +27,32 @@ class TimecampeonatoController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+               'class' => AccessControl::className(),
+               //'only' => ['login', 'logout', 'signup'],
+               'rules' => [
+                   [
+                       'allow' => true,
+                       'actions' => ['index'],
+                       'roles' => ['timecampeonatoIndex'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['view'],
+                       'roles' => ['timecampeonatoView'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['create'],
+                       'roles' => ['timecampeonatoCreate'],
+                   ],
+                   [
+                       'allow' => true,
+                       'actions' => ['update'],
+                       'roles' => ['timecampeonatoUpdate'],
+                   ],
+               ],
+           ],
         ];
     }
 

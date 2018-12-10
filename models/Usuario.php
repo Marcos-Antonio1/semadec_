@@ -6,9 +6,9 @@ use Yii;
 use yii\web\IdentityInterface;
 use yii\db\ActiveRecord;
 
-/** 
- * This is the model class for table "usuario". 
- * 
+/**
+ * This is the model class for table "usuario".
+ *
  * @property int $id
  * @property string $username
  * @property string $email
@@ -18,17 +18,17 @@ use yii\db\ActiveRecord;
  * @property string $access_token
  * @property string $biografia
  * @property string $formacao
- * 
+ *
  * @property AlunoHasTime[] $alunoHasTimes
  * @property Time[] $timeIdTimes
  * @property EventoHasUsuario[] $eventoHasUsuarios
  * @property Evento[] $eventoIdeventos
- */ 
+ */
 class Usuario extends ActiveRecord implements IdentityInterface
 {
 
     public $password_repeat;
-    
+
     /**
      * {@inheritdoc}
      */
@@ -37,11 +37,11 @@ class Usuario extends ActiveRecord implements IdentityInterface
         return 'usuario';
     }
 
-    /** 
-     * {@inheritdoc} 
-     */ 
-    public function rules() 
-    { 
+    /**
+     * {@inheritdoc}
+     */
+    public function rules()
+    {
         return [
             [['username', 'email', 'tipo', 'password'], 'required'],
             [['tipo'], 'string'],
@@ -50,15 +50,15 @@ class Usuario extends ActiveRecord implements IdentityInterface
             [['auth_key', 'access_token', 'formacao'], 'string', 'max' => 300],
             [['biografia'], 'string', 'max' => 1000],
             [['password_repeat'], 'compare', 'compareAttribute' => 'password'],
-        ]; 
-    } 
+        ];
+    }
 
-    /** 
-     * {@inheritdoc} 
-     */ 
-    public function attributeLabels() 
-    { 
-        return [ 
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
             'id' => Yii::t('app', 'ID'),
             'username' => Yii::t('app', 'Username'),
             'email' => Yii::t('app', 'Email'),
@@ -68,40 +68,40 @@ class Usuario extends ActiveRecord implements IdentityInterface
             'access_token' => Yii::t('app', 'Access Token'),
             'biografia' => Yii::t('app', 'Biografia'),
             'formacao' => Yii::t('app', 'Formacao'),
-        ]; 
+        ];
     }
 
-    /** 
-     * @return \yii\db\ActiveQuery 
-     */ 
-    public function getAlunoHasTimes() 
-    { 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAlunoHasTimes()
+    {
         return $this->hasMany(AlunoHasTime::className(), ['usuario_id' => 'id']);
-    } 
+    }
 
-    /** 
-     * @return \yii\db\ActiveQuery 
-     */ 
-    public function getTimeIdTimes() 
-    { 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTimeIdTimes()
+    {
         return $this->hasMany(Time::className(), ['idTime' => 'time_idTime'])->viaTable('aluno_has_time', ['usuario_id' => 'id']);
-    } 
+    }
 
-    /** 
-     * @return \yii\db\ActiveQuery 
-     */ 
-    public function getEventoHasUsuarios() 
-    { 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getEventoHasUsuarios()
+    {
         return $this->hasMany(EventoHasUsuario::className(), ['usuario_id' => 'id']);
-    } 
+    }
 
-    /** 
-     * @return \yii\db\ActiveQuery 
-     */ 
-    public function getEventoIdeventos() 
-    { 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getEventoIdeventos()
+    {
         return $this->hasMany(Evento::className(), ['idevento' => 'evento_idevento'])->viaTable('evento_has_usuario', ['usuario_id' => 'id']);
-    } 
+    }
 
     /**
      * Localiza uma identidade pelo ID informado
@@ -193,10 +193,10 @@ class Usuario extends ActiveRecord implements IdentityInterface
                 $this->auth_key = \Yii::$app->security->generateRandomString();
                 $this->access_token = \Yii::$app->security->generateRandomString();
             }
-            
+
             if (isset($this->dirtyAttributes['password']))
                 $this->password = sha1($this->password);
-            
+
             return true;
         }
         return false;
