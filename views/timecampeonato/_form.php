@@ -17,7 +17,7 @@ use app\models\Campeonato;
 
     <?= $form->field($model, 'idTime')->dropDownList(ArrayHelper::map(Time::find()->All(), 'idTime', 'turma.Nome')) ?>
 
-    <?= $form->field($model, 'idCampeonato')->dropDownList(ArrayHelper::map(Campeonato::find()->All(), 'idCampeonato', 'semadec.Ano')) ?>
+    <?= $form->field($model, 'idCampeonato')->dropDownList(ArrayHelper::map(Campeonato::find()->All(), 'idCampeonato', 'esporte.modalidade')) ?>
 
     <?= $form->field($model, 'pontos')->textInput() ?>
 

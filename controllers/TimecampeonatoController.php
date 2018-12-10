@@ -59,6 +59,20 @@ class TimecampeonatoController extends Controller
     }
 
     /**
+     * Displays a single TimeCampeonato model.
+     * @param integer $idTime
+     * @param integer $idCampeonato
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionClassificacao($idCampeonato)
+    {
+        return $this->render('index', [
+            'models' => $this->findModels($idCampeonato),
+        ]);
+    }
+
+    /**
      * Creates a new TimeCampeonato model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -128,4 +142,22 @@ class TimecampeonatoController extends Controller
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
+
+    /**
+     * Finds the TimeCampeonato model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $idTime
+     * @param integer $idCampeonato
+     * @return TimeCampeonato the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModels($idCampeonato)
+    {
+        if (($models = TimeCampeonato::findByCampeonato($idCampeonato)) !== null) {
+            return $models;
+        }
+
+        throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+    }
+
 }

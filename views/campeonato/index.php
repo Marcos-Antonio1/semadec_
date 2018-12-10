@@ -32,6 +32,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php endif; ?>
                 <p class="card-text"><small class="text-muted"><?= $model->semadec->Tema ?></small></p>
                 <a href="<?= Url::toRoute(['campeonato/view', 'id' => $model->idCampeonato]) ?>" class="btn btn-primary">Visualizar</a>
+                <?php
+                    if (!Yii::$app->user->isGuest && Yii::$app->user->identity->tipo === "admin")
+                    {
+                        echo Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->esporte->idEsporte], ['class' => 'btn btn-primary']) . " ";
+                        echo Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->esporte->idEsporte], [
+                            'class' => 'btn btn-danger',
+                            'data' => [
+                                'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+                                'method' => 'post',
+                            ],
+                        ]);
+                    }
+                ?>
             </div>
         </div>
         <?php endforeach; ?>

@@ -18,8 +18,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="card-img-overlay">
             <h1 class="card-title font-weight-bold text-center"><?= $model->semadec->Tema ?></h1>
             <p class="card-text font-weight-bold text-center">Categoria: <?= $model->esporte->categoria ?></p>
-
+            <p class="card-text font-weight-bold text-center">            
+                <a href="<?= Url::toRoute(['timecampeonato/classificacao', "idCampeonato" => $model->idCampeonato]) ?>" class="btn btn-danger">Classificação</a>
+            </p>
     <h2 class="font-weight-bold text-center">Times cadastrados no campeonato</h2>
+
 
     <table class="table">
         <thead>

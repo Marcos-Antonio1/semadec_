@@ -36,8 +36,7 @@ class TimeCampeonato extends \yii\db\ActiveRecord
             [['idTime', 'idCampeonato'], 'required'],
             [['idTime', 'idCampeonato', 'pontos', 'vitorias', 'derrotas'], 'integer'],
             [['grupos'], 'string', 'max' => 45],
-            [['idCampeonato'], 'unique'],
-            [['idTime', 'idCampeonato'], 'unique', 'targetAttribute' => ['idTime', 'idCampeonato']],
+            [['idTime'], 'unique', 'targetAttribute' => ['idTime', 'idCampeonato']],
             [['idCampeonato'], 'exist', 'skipOnError' => true, 'targetClass' => Campeonato::className(), 'targetAttribute' => ['idCampeonato' => 'idCampeonato']],
             [['idTime'], 'exist', 'skipOnError' => true, 'targetClass' => Time::className(), 'targetAttribute' => ['idTime' => 'idTime']],
         ];
@@ -72,5 +71,13 @@ class TimeCampeonato extends \yii\db\ActiveRecord
     public function getTime()
     {
         return $this->hasOne(Time::className(), ['idTime' => 'idTime']);
+    }
+
+    public function findByCampeonato($idCampeonato)
+    {
+        return TimeCampeonato::find()
+            ->where(['idCampeonato' => $idCampeonato])
+            ->orderBy('pontos DESC')
+            ->all();   
     }
 }
